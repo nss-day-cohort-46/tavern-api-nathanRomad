@@ -43,7 +43,7 @@ def get_teams(filters):
                             ts.score,
                             ts.timeStamp
                         FROM Teams t
-                        LEFT OUTER JOIN TeamScores ts ON ts.teamId = t.id
+                        LEFT OUTER JOIN TeamScore ts ON ts.teamId = t.id
                         """)
 
                         dataset = db_cursor.fetchall()
