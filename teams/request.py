@@ -41,9 +41,9 @@ def get_teams(filters):
                             ts.id score_id,
                             ts.teamId,
                             ts.score,
-                            ts.time_stamp
+                            ts.timeStamp
                         FROM Teams t
-                        LEFT OUTER JOIN TeamScore ts ON ts.teamId = t.id
+                        LEFT OUTER JOIN TeamScores ts ON ts.teamId = t.id
                         """)
 
                         dataset = db_cursor.fetchall()
@@ -84,10 +84,10 @@ def get_teams(filters):
                                 team = teams[row['id']]
 
                             player = Player(row['player_id'], row['firstName'], row['lastName'], row['teamId'])
-                        team.players.append(player.__dict__)
+                            team.players.append(player.__dict__)
 
-            json_teams = []
-            for team in teams.values():
-                json_teams.append(team.__dict__)
-            return json.dumps(json_teams)
+        json_teams = []
+        for team in teams.values():
+            json_teams.append(team.__dict__)
+        return json.dumps(json_teams)
 
